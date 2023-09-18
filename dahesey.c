@@ -12,13 +12,21 @@ int main(void)
 	size_t n = 0;
 	char *prompt = "dahesey$ ";
 	bool state = true;
-
-	getline(&line, &n, stdin);
+	ssize_t read;
 
 	while(state)
 	{
 		printf("%s", prompt);
-		getchar();
+		read = getline(&line, &n, stdin);
+		
+		if (read == -1)
+		{
+			printf("\n");
+			state = false;
+		}
+		else
+			printf("error:%scannot be found\n", line);
 	}
+	free(line);
 	return (0);
 }	
