@@ -24,8 +24,8 @@ int main(void)
 			printf("\n");
 			state = false;
 		}
-		else
-			printf("error:%scannot be found\n", line);
+		else if (line[read -1] == '\n')
+			line[read -1] = '\0';
 	}
 	free(line);
 	return (0);
