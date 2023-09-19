@@ -14,11 +14,11 @@ int main(void)
 	bool state = true;
 	ssize_t read;
 
-	while(state)
+	while (state)
 	{
 		printf("%s", prompt);
 		read = getline(&line, &n, stdin);
-		
+
 		if (read == -1)
 		{
 			printf("\n");
@@ -29,4 +29,4 @@ int main(void)
 	}
 	free(line);
 	return (0);
-}	
+}

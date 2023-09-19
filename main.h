@@ -8,7 +8,9 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <stdbool.h>
-#define MAX_ARG 100;
+
+
+#define MAX_ARG 1024
 
 ssize_t getline(char **line, size_t *n, FILE *fp);
 #endif /**MAIN_H**/
