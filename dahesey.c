@@ -10,7 +10,7 @@ int main(void)
 {
 	char *line = NULL;
 	size_t n = 0;
-	char *prompt = "dahesey$ ";
+	char *prompt = "dahesey ";
 	bool state = true;
 	ssize_t read;
 
@@ -26,6 +26,8 @@ int main(void)
 		}
 		else if (line[read -1] == '\n')
 			line[read -1] = '\0';
+		else
+			printf("Error: %s cannot be found\n");
 	}
 	free(line);
 	return (0);
