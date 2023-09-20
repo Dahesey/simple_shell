@@ -10,7 +10,7 @@
 
 #include "main.h"
 int analyze_commands(char **args, char *line, char *name, int cmd_count,
-		int status)
+			int status)
 {
 	if (strcmp(args[0], "env") == 0)
 		return (env());
@@ -34,9 +34,9 @@ int validate_commands(char **args, char *name, int cmd_count)
 {
 	char path[BUFSIZ];
 	int cmd_status;
-	struct stat status;
+	struct stat statu;
 
-	if (stat(args[0], &status) == 0)
+	if (stat(args[0], &statu) == 0)
 		cmd_status = _command(args);
 	else if (path_handler(args[0], path))
 	{

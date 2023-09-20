@@ -10,7 +10,7 @@
 #include <stdbool.h>
 #include <ctype.h>
 #include <errno.h>
-
+#include <sys/stat.h>
 
 typedef int bool_t;
 #define TRUE 1
