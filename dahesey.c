@@ -1,33 +1,43 @@
 /**
-  * main - Entry point
-  * Authors - Cynthia Dodzi  & Cynthia Hyamber
-  * Return: Always 0
-  */
+ * main - Entry point
+ * Authors - Cynthia Dodzi  & Cynthia Hyamber
+ * @ac: Argument count
+ * @av: Array pointer of arguments to be passed
+ * Return: Always 0
+ */
 
 #include "main.h"
 
-int main(void)
+int main(int ac, char *av[])
 {
 	char *line = NULL;
 	size_t n = 0;
-	char *prompt = "dahesey ";
-	bool state = true;
-	ssize_t read;
+	char *prompt = "dahesey ", **args;
+	bool_t state = TRUE;
+	int cmd_status, cmd_count = 0;
+	int mode = isatty(STDIN_FILENO);
 
+	UNUSED(ac);
 	while (state)
 	{
-		printf("%s", prompt);
-		read = getline(&line, &n, stdin);
-		if (read == -1)
+		if (mode == 1)
+			printf("%s", prompt);
+		if (getline(&line, &n, stdin) == -1)
+			break;
+		cmd_count++;
+		args = _token(line, "\t\n");
+		if (args == NULL || args[0] == NULL)
 		{
-			printf("\n");
-			state = false;
+			if (args[0] == NULL)
+				free(args);
+			continue;
 		}
-		else if (line[read - 1] == '\n')
-			line[read - 1] = '\0';
-		else
-			printf("Error: %s: command not found\n", line);
+		cmd_status = analyze_commands(args, line,
+			av[0], cmd_count, cmd_status);
+		free(args);
 	}
+	if (mode == 1)
+		putchar('\n');
 	free(line);
-	return (0);
+	exit(cmd_status);
 }
