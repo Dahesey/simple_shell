@@ -25,7 +25,7 @@ int main(int ac, char *av[])
 		if (getline(&line, &n, stdin) == -1)
 			break;
 		cmd_count++;
-		args = _token(line, "\t\n");
+		args = _token(line, " \t\n");
 		if (args == NULL || args[0] == NULL)
 		{
 			if (args[0] == NULL)
