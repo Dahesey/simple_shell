@@ -26,14 +26,10 @@ int main(int ac, char *av[])
 			break;
 		cmd_count++;
 		args = _token(line, " \t\n");
-		if (args == NULL || args[0] == NULL)
-		{
-			if (args[0] == NULL)
-				free(args);
+		if (args == NULL)
 			continue;
-		}
-		cmd_status = analyze_commands(args, line,
-			av[0], cmd_count, cmd_status);
+		cmd_status = analyze_commands(args, line, av[0],
+						cmd_count, cmd_status);
 		free(args);
 	}
 	if (mode == 1)

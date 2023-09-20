@@ -35,14 +35,15 @@ int exit_command(char **args, char *line,
 	}
 
 	tmp = args[1];
-	while (tmp[1])
+	while (tmp[i])
 	{
 		if (isdigit(tmp[i]) == 0)
 		{
-			fprintf(stderr, "%s: %d: %s: illegal number: %s\n",
-				name, cmd_count, args[0], args[1]);
+			fprintf(stderr, "%s: %d: %s: illegal number: 
+				%s\n", name, cmd_count, args[0], args[1]);
 		return (2);
 		}
+		i++;
 	}
 	status = atoi(args[1]);
 	free(args);

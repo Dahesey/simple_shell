@@ -21,7 +21,7 @@ size_t num_tokens(char *input, char *lim)
 	return (count);
 }
 /**
-  * _token - A functiont to tokenise a string
+  * _token - A function to tokenise a string
   * @input: String entered
   * @lim: Separator
   * Return: Always 0
@@ -36,6 +36,8 @@ char **_token(char *input, char *lim)
 	if (inputcpy == NULL)
 		return (NULL);
 	len = num_tokens(inputcpy, lim);
+	if (len == 0)
+		return (NULL);
 	tokens_array = malloc(sizeof(char *) * (len + 1));
 	if (tokens_array == NULL)
 		return (NULL);
